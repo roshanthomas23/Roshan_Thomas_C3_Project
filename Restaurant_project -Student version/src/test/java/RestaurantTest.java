@@ -32,7 +32,13 @@ class RestaurantTest {
 
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
-        //WRITE UNIT TEST CASE HERE
+        Restaurant restaurant = Mockito.mock(Restaurant.class);
+
+      LocalTime outsideClosingAndOpeningTime = LocalTime.parse("09:00:00");
+      Mockito.when(restaurant.getCurrentTime()).thenReturn(outsideClosingAndOpeningTime);
+
+      boolean isRestaurantOpen = restaurant.isRestaurantOpen();
+      assertFalse(isRestaurantOpen);
 
     }
 
